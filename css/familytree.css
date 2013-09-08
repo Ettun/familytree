@@ -1,0 +1,17 @@
+.member-template {
+	width: 100px;
+	height: 100px;
+	background-color: #FFC;
+	top: 10px;
+	margin: 10px 10px;
+	float: left;
+}
+#familyapp {
+	position: relative;
+}
+.generation {
+	width: 100%;
+	height: 120px;
+	background-color: #EEE;
+	position: relative;
+}
