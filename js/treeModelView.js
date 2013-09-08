@@ -1,11 +1,10 @@
 define('treeModelView', [
     'jquery',
+    'underscore',
     'backbone',
     'mustache',
-    'treeModel',
-    'treeCollection',
     'text!templates/search/primitive.html'
-], function ($, Backbone, mustache, treeModel, treeCollection, treeTemplate) {
+], function ($, _, Backbone, mustache, treeTemplate) {
     var TreeModelView = Backbone.View.extend({
         tagName: 'div',
         el: "#familyapp",
@@ -14,7 +13,7 @@ define('treeModelView', [
             'click .member-template': 'toggleTree'
         },
         initialize: function () {
-            this.listenTo(this.model, 'change', this.render);
+            //this.listenTo(this.model, 'change', this.render);
         },
         render: function () {
             var rendered = mustache.to_html(treeTemplate, this.model.toJSON());
@@ -22,8 +21,7 @@ define('treeModelView', [
             return this;
         },
         toggleTree: function (e) {
-            var inside = this.$('.member-template');
-            inside.hide();
+            this.model.toggleIncluded();
         }
     });
     return TreeModelView;
